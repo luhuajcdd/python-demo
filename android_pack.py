@@ -23,7 +23,7 @@ class AndroidPack(object):
 
     def pack(self):
         # chmod 0777 ./MOApack.sh
-        chmod_pack_shell = 'chmod 0777 ./pack.sh'
+        chmod_pack_shell = 'chmod 0777 ./pack_%s.sh' % (self.product)
         res = os.system(chmod_pack_shell)
         print("chmod res = %s" % res)
 
@@ -60,6 +60,6 @@ class AndroidPack(object):
 
         print(rm_files)
         os.system(rm_files)
-        cp_package = "cp %s%s  %s" % (self.pack_file_dir,self.package_name,back_up_dir)
+        cp_package = "cp %s/%s  %s" % (self.pack_file_dir,self.package_name,back_up_dir)
         print(cp_package)
         os.system(cp_package)

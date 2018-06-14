@@ -4,6 +4,8 @@
     云办公 配置类
     1. 分享： 微信 key = wx93dcd36a0bf70586
 '''
+import os
+import platform
 import sys
 
 SUCCESS = 1
@@ -239,3 +241,27 @@ check_result(result)
 
 print(result)
 
+def copy_image():
+    '''
+    替换项目中的图片
+    :return: void
+    '''
+    os.chdir('shell')
+    sysstr = platform.system()
+    if sysstr  == "Windows":
+        command_str = "copy-drawable-kdcloud.sh "
+    elif sysstr == "Linux" or sysstr == "Darwin":
+        command_str = "./copy-drawable-kdcloud.sh %s "
+    else:
+        print("error: 没有对应平台的脚本")
+        return
+
+    print(command_str)
+    res = os.system(command_str)  # 调用shell脚本
+    print(res)
+    if res == 0:
+        print('替换图片完成')
+    else:
+        print("error")
+
+copy_image()
