@@ -10,8 +10,9 @@ from config import ConfigSingleton
 
 class AndroidPack(object):
 
-    def __init__(self,pack_file_dir,package_name,build_type,version,version_code,modify_config_ip,custom_app_name):
+    def __init__(self,pack_file_dir,product,package_name,build_type,version,version_code,modify_config_ip,custom_app_name):
         self.pack_file_dir = pack_file_dir
+        self.product = product
         self.package_name = package_name
         self.build_type = build_type
         self.version = version
@@ -31,9 +32,9 @@ class AndroidPack(object):
                                                           self.version,self.version_code,self.modify_config_ip,
                                                           self.custom_app_name)
         if svn.isWindows():
-            command_str="pack.sh %s " % command_param
+            command_str="pack_%s.sh %s " % (self.product,command_param)
         elif svn.isLinuxOrMac():
-            command_str = "./pack.sh %s " % command_param
+            command_str = "./pack_%s.sh %s " % (self.product,command_param)
         else:
             print("error: 没有对应平台的脚本")
             return

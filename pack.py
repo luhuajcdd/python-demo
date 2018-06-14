@@ -1,7 +1,7 @@
 # -*- coding:utf-8  -*-
 
-# python pack.py  svn_path=svn://200.200.107.201/moa/moa/moa1.1/Branches/android/Android4.3.0-20180509 build=beta pack_dir=/Users/sangfor/Documents/138pack/android-4.3 version=5.0.0 version_code=64 modify_config_ip=YES custom_app_name=NONE
-# python pack.py  svn_path=svn://200.200.107.201/moa/moa/moa1.1/Branches/android/Android4.3.0-20180509 build=release pack_dir=/138pack/android-4.3 version=5.0.0 version_code=64 modify_config_ip=YES custom_app_name=NONE
+# python pack.py  svn_path=svn://200.200.107.201/moa/moa/moa1.1/Branches/android/Android4.3.0-20180509 product=pocket build=beta pack_dir=/Users/sangfor/Documents/138pack/android-4.3 version=5.0.0 version_code=64 modify_config_ip=YES custom_app_name=NONE
+# python pack.py  svn_path=svn://200.200.107.201/moa/moa/moa1.1/Branches/android/Android4.3.0-20180509 product=pocket build=release pack_dir=/138pack/android-4.3 version=5.0.0 version_code=64 modify_config_ip=YES custom_app_name=NONE
 import os
 import AndroidPackEntity
 import build_src
@@ -82,7 +82,7 @@ code_version = svn.checkout_and_get_code_version(packEntity.svn_path)
     build-info = {release/beta}{version}{code-version} 关于界面显示的内容
     package-name = {Pocket/kdcloud/定制}{release/beta}{version}{code-version}.apk
 '''
-package_name='pocket-%s-%s-%s.apk' % (packEntity.build_type,packEntity.version,code_version)
+package_name='%s-%s-%s-%s.apk' % (packEntity.product,packEntity.build_type,packEntity.version,code_version)
 print(package_name)
 
 """
@@ -91,6 +91,7 @@ print(package_name)
 def pack():
     if get_key(build_src.is_android(packEntity.svn_path)):
         androidPack = AndroidPack(packEntity.pack_file_dir,
+                                  packEntity.product,
                                   package_name,
                                   packEntity.build_type,
                                   packEntity.version,

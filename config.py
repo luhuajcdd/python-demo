@@ -1,7 +1,7 @@
 # -*- coding:utf-8  -*-
 import os
 
-import ConfigParser
+import configparser
 import threading
 class ConfigSingleton(object):
     _instance_lock = threading.Lock()
@@ -15,7 +15,7 @@ class ConfigSingleton(object):
             print("%s not exist" % file_name)
             return
         # 生成config对象
-        conf = ConfigParser.ConfigParser()
+        conf = configparser.ConfigParser()
         # 用config对象读取配置文件
         conf.read(file_name)
         self.back_up_dir = conf.get("back_up", "back-up-dir")

@@ -6,6 +6,7 @@ class PackEnity:
     def __init__(self):
         self.svn_path=None
         self.pack_file_dir = None
+        self.product = None
         self.build_type = None
         self.version = None
         self.version_code = None
@@ -19,6 +20,7 @@ class PackEnity:
         # 解析命令参数
         parser = argparse.ArgumentParser(description='manual to this script')
         parser.add_argument('svn_path', type=str, default = None)
+        parser.add_argument('product', type=str, default=None)
         parser.add_argument('build', type=str, default=None)
         parser.add_argument('pack_dir', type=str, default=None)
         parser.add_argument('version', type=str, default=None)
@@ -28,7 +30,7 @@ class PackEnity:
         args = parser.parse_args()
 
         print('\n 输入参数：')
-        print(' %s \n %s \n %s \n %s \n %s \n %s \n %s' % (args.svn_path, args.pack_dir, args.build, args.version, args.version_code, args.modify_config_ip, args.custom_app_name))
+        print(' %s \n %s \n  %s \n %s \n %s \n %s \n %s \n %s' % (args.svn_path, args.pack_dir,args.product, args.build, args.version, args.version_code, args.modify_config_ip, args.custom_app_name))
         return args
 
     def get_value(self,key_value):
@@ -49,6 +51,7 @@ class PackEnity:
             return
         self.svn_path=self.get_value(args.svn_path)
         self.pack_file_dir=self.get_value(args.pack_dir)
+        self.product = self.get_value(args.product)
         self.build_type=self.get_value(args.build)
         self.version=self.get_value(args.version)
         self.version_code=self.get_value(args.version_code)
@@ -56,5 +59,5 @@ class PackEnity:
         self.custom_app_name=self.get_value(args.custom_app_name)
 
         print('value: ')
-        print(' %s \n %s \n %s \n %s \n %s \n %s \n %s' % (self.svn_path, self.pack_file_dir,self.build_type, self.version, self.version_code, self.modify_config_ip, self.custom_app_name))
+        print(' %s \n %s \n %s \n %s \n %s \n %s \n %s \n %s' % (self.svn_path, self.pack_file_dir,self.product,self.build_type, self.version, self.version_code, self.modify_config_ip, self.custom_app_name))
 
