@@ -60,6 +60,6 @@ class AndroidPack(object):
 
         print(rm_files)
         os.system(rm_files)
-        cp_package = "cp %s/%s  %s" % (self.pack_file_dir,self.package_name,back_up_dir)
+        cp_package = "mv %s/%s  %s/%s" % (self.pack_file_dir,self.package_name,back_up_dir,self.package_name)
         print(cp_package)
         os.system(cp_package)

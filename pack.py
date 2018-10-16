@@ -7,6 +7,7 @@ import AndroidPackEntity
 import build_src
 import command_util
 import svn
+import react_native
 
 # 解析参数
 from android_pack import AndroidPack
@@ -22,6 +23,7 @@ packEntity.pack_file_dir = basePath + packEntity.pack_file_dir
 curdir=basePath  + '/autopack'
 #verdir='/Users/sangfor/Documents/autopack/version/'
 #releasedir='/Users/sangfor/Documents/138pack/autopack/'
+
 
 command_util.cd_pwd(curdir)
 
@@ -68,6 +70,9 @@ full_build_type = add_dir(full_build_type, packEntity.version)
 
 svn.clear_pack_and_create_new_dir(full_build_type)
 
+#工程名
+project_name = packEntity.svn_path[packEntity.svn_path.rfind('/') + 1:]
+
 # 进入打包目录
 print("%s %s" %(os.path.pardir.strip(),full_build_type.strip()))
 command_util.cd_pwd(full_build_type)
@@ -77,6 +82,15 @@ command_util.cd_pwd(full_build_type)
  打包代码version , 获取代码的svn版本号
 '''
 code_version = svn.checkout_and_get_code_version(packEntity.svn_path)
+
+
+'''
+  1. 更新react-native代码
+  2. 生成bundle文件
+  3. 拷贝到打包工程下
+'''
+react_native.get_bundle_file(curdir + '/' + full_build_type,project_name)
+
 
 '''
     build-info = {release/beta}{version}{code-version} 关于界面显示的内容
