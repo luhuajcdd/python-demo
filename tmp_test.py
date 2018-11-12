@@ -1,6 +1,6 @@
 # -*- coding:utf-8  -*-
 import os
-
+'''
 from config import ConfigSingleton
 
 
@@ -17,3 +17,11 @@ def backPackage(package_name):
 
 
 backPackage("pocket-release-5.0.0-105569.apk")
+'''
+
+from os import path
+def cur_dir():
+    dir = path.dirname(__file__)
+    print("cur =  %s " % dir)
+
+cur_dir()

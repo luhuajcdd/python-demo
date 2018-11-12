@@ -24,10 +24,18 @@ def get_bundle_file(pack_dir,project_name):
                         stderr=subprocess.PIPE)
 						
 	# 拷贝到打包工程下
-	cp_bundle="cp -r %s %s" % ('./output/bundle/',pack_dir+'/'+project_name+'/bussiness_modules/rn/src/main/asserts/')
-	os.system(cp_bundle)
+	cp_bundle="cp -r %s %s" % ('./output/bundle/',pack_dir+'/'+project_name+'/bussiness_modules/rn/src/main/assets/')
+	#os.system(cp_bundle)
+	subprocess.Popen(cp_bundle, shell=True,
+						stdin=subprocess.PIPE,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE)
 	cp_res="cp -r %s %s" % ('./output/res/',pack_dir+'/'+project_name+'/bussiness_modules/rn/src/main/res/')
-	os.system(cp_res)
+	#os.system(cp_res)
+	subprocess.Popen(cp_res, shell=True,
+					 stdin=subprocess.PIPE,
+					 stdout=subprocess.PIPE,
+					 stderr=subprocess.PIPE)
 	
 	#回到打包目录
 	command_util.cd_pwd(pack_dir+'/'+project_name)

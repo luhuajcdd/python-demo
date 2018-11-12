@@ -1,5 +1,6 @@
 # -*- coding:utf-8  -*-
 import os
+import sys
 
 import configparser
 import threading
@@ -10,9 +11,11 @@ class ConfigSingleton(object):
         pass
 
     def parser(self):
-        file_name='/Users/sangfor/Documents/autopack/pocket_pack/pack.cfg'
+        cur_dir = os.path.dirname(__file__)
+        file_name= cur_dir + '/pack.cfg'
         if not os.path.exists(file_name):
             print("%s not exist" % file_name)
+            sys.exit(1)
             return
         # 生成config对象
         conf = configparser.ConfigParser()
