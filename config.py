@@ -12,9 +12,9 @@ class ConfigSingleton(object):
 
     def parser(self):
         cur_dir = os.path.dirname(__file__)
-        file_name= cur_dir + '/pack.cfg'
+        file_name = cur_dir + '/pack.cfg'
         if not os.path.exists(file_name):
-            print("%s not exist" % file_name)
+            print("%s not exist, and exit()" % file_name)
             sys.exit(1)
             return
         # 生成config对象

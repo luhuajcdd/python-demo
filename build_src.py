@@ -13,6 +13,6 @@ def is_branch(path):
     return path.find(branches) > -1,branches
 
 def is_trunk(path):
-    trunck = "Trunk"
-    return path.find(trunck) > -1,trunck
+    trunk = "Trunk"
+    return path.find(trunk) > -1,trunk
 

@@ -25,3 +25,5 @@ def cur_dir():
     print("cur =  %s " % dir)
 
 cur_dir()
+
+os.system('sed -i  "s/Documents\/sdk/dehua/" pack.sh')

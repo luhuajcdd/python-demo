@@ -114,6 +114,7 @@ gradle clean assemblerelease
 if [ $? -eq 0 ];then
 	echo "######## android pack done ############"
 	echo $svnv > $verlog
+	ls -l
         
 	cp -f app/build/outputs/apk/app-prod-release.apk "$package_dir/$package_name"
 
